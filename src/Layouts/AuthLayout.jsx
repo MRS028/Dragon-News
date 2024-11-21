@@ -10,6 +10,7 @@ const AuthLayout = () => {
             </header>
         
             <Outlet/>
+            
         </div>
     );
 };

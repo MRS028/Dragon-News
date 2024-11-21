@@ -1,9 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 
 const RegisterPage = () => {
+  useEffect(() => {
+    document.title = "Register | Dragon News";
+  }, []);
 
     const navigate = useNavigate();
 
@@ -35,7 +38,7 @@ const RegisterPage = () => {
               navigate('/')
             }).catch(err=>{console.log(err, 'Error')});
             navigate('/');
-            console.log(user);
+            
 
         })
         .catch((error) => {

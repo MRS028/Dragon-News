@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/Header";
 import LatestNews from "../Components/LatestNews";
 import NavBar from "../Components/NavBar";
 import LeftNavBar from "../Components/Layout-component/LeftNavBar";
 import RightNav from "../Components/RightNav";
 import { Outlet } from "react-router-dom";
-
+import Footer from "./Footer";
 const HomeLayout = () => {
+  useEffect(() => {
+    document.title = "Home | Dragon News";
+  }, []);
   return (
     <div className="font-poppins">
       <header>
@@ -26,6 +29,9 @@ const HomeLayout = () => {
       <aside className="col-span-3 mx-5"><RightNav></RightNav></aside>
       
       </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
     </div>
   );
 };

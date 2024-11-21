@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const ErrorPage = () => {
+
+  useEffect(() => {
+    document.title = "ERROR 404";
+  }, []);
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Oops! Something Went Wrong.</h1>
