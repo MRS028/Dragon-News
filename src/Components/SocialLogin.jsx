@@ -5,9 +5,9 @@ const SocialLogin = () => {
     return (
         <div>
             <h1 className='font-semibold mb-3 '>Login With</h1>
-            <div className='space-y-2 *:w-full'>
-                <button className="btn"><FcGoogle />Login With Google</button>
-                <button className="btn"><FaGithub />Login with Github</button>
+            <div className='space-y-2 '>
+                <button className="btn w-full"><FcGoogle />Login With Google</button>
+                <button className="btn w-full"><FaGithub />Login with Github</button>
             </div>
         </div>
     );

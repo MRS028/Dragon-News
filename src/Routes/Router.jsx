@@ -2,6 +2,13 @@ import React from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import HomeLayout from '../Layouts/HomeLayout';
 import CategoryNews from '../Pages/CategoryNews';
+import AuthLayout from '../Layouts/AuthLayout';
+import ErrorPage from '../Components/ErrorPage';
+import LoginPage from '../Components/Login-Register/LoginPage';
+import RegisterPage from '../Components/Login-Register/RegisterPage';
+import ForgetPasswordPage from '../Components/Login-Register/ForgetPasswordPage';
+import NewsDetails from '../Pages/NewsDetails';
+import PrivateRoute from './PrivateRoute';
 
 const Router = createBrowserRouter([
     {
@@ -20,16 +27,32 @@ const Router = createBrowserRouter([
         ]
     },
     {
-        path: "/news",
-        element: <h1>News</h1>
+        path: "/news/:id",
+        element: <PrivateRoute><NewsDetails/> </PrivateRoute>,
+            
+        loader: ({params}) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
     },
     {
         path: "auth",
-        element: <h1>Login</h1>
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path:"/auth/login",
+                element: <LoginPage></LoginPage>
+            },
+            {
+                path:"/auth/register",
+                element: <RegisterPage></RegisterPage>
+            },
+            {
+                path:"/auth/forgetpassword",
+                element: <ForgetPasswordPage></ForgetPasswordPage>
+            },
+        ]
     },
     {
         path: "*",
-        element: <h1>Error</h1>
+        element: <ErrorPage></ErrorPage>
     },
 ])
 
