@@ -23,9 +23,9 @@ const HomeLayout = () => {
       <nav className="w-11/12 mx-auto py-5">
           <NavBar></NavBar>
         </nav>
-      <main className="w-11/12 mx-auto pt-6 grid md:grid-cols-12">
-      <aside className="left col-span-3"><LeftNavBar></LeftNavBar></aside>
-      <section className="col-span-6">
+      <main className="md:w-11/12 mx-auto  grid md:grid-cols-12">
+      <aside className="md:left col-span-3 pb-5  "><LeftNavBar></LeftNavBar></aside>
+      <section className="md:col-span-6">
       <Outlet></Outlet>
       </section>
       <aside className="col-span-3 mx-5"><RightNav></RightNav></aside>

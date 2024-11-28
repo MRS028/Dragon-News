@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const NewsCard = ({ data }) => {
   return (
-    <div className="card w-full bg-white shadow-lg border border-gray-200 rounded-lg overflow-hidden">
+    <div className="card w-full bg-white shadow-lg border mb-5  border-gray-400 rounded-lg overflow-hidden">
       {/* Card Header */}
       <div className="flex bg-base-200 items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
