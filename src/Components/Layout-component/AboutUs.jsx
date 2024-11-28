@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "About Us | Dragon News";
+  }, []);
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto text-center">
