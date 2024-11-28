@@ -1,24 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { toast } from "react-toastify";
+import SocialLogin from "../SocialLogin";
 
 const LoginPage = () => {
   useEffect(() => {
-    document.title = "Login| Dragon News";
+    document.title = "Login | Dragon News";
   }, []);
+
   const navigate = useNavigate();
-  const { setUser, userLogin } = useContext(AuthContext);
+  const { setUser, userLogin} =
+    useContext(AuthContext);
   const [error, setError] = useState({});
   const location = useLocation();
-  // console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    
+
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
@@ -26,9 +27,11 @@ const LoginPage = () => {
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
-        setError({...error ,login:err.code});
+        setError({ ...error, login: err.code });
       });
   };
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-r bg-base-200 flex justify-center items-center font-poppins">
@@ -67,9 +70,11 @@ const LoginPage = () => {
               required
             />
           </div>
-          {
-            error.login && <p className="text-red-500 text-sm">{error.login}:Wrong email or password</p>
-          }
+          {error.login && (
+            <p className="text-red-500 text-sm">
+              {error.login}: Wrong email or password
+            </p>
+          )}
 
           <p className="text-blue-500 mb-3 text-sm hover:underline">
             <Link to="/auth/forgetpassword">Forget your password?</Link>
@@ -82,6 +87,12 @@ const LoginPage = () => {
             Login
           </button>
         </form>
+
+        
+        <div className="mt-4 font-semibold text-center">
+         Or <SocialLogin/>
+        </div>
+
         <p className="mt-4 text-center text-sm text-gray-600">
           Don't have an account?{" "}
           <Link to="/auth/register">

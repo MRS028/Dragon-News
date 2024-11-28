@@ -35,6 +35,9 @@ const RegisterPage = () => {
             setUser(user);
             updateUserProfile({displayName:name ,photoURL:photourl})
             .then(()=>{
+              toast.success("Registration successful!",{
+                autoClose: 1500, 
+              });
               navigate('/')
             }).catch(err=>{console.log(err, 'Error')});
             navigate('/');

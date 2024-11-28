@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import userIcon from '../assets/user.png'
 import { AuthContext } from "../Provider/AuthProvider";
+import { IoIosLogIn, IoIosLogOut } from "react-icons/io";
 
 const NavBar = () => {
   const {user,logOut} =useContext(AuthContext);
@@ -18,9 +19,9 @@ const NavBar = () => {
         <p className="py-2 text-xl font-semibold">{user && user.displayName}</p>
         </div>
       <div className="nav text-xl space-x-5">
-        <Link to='/'> Home </Link>
-        <Link to='/career'>Career</Link>
-        <Link to='/about'>About</Link>
+        <Link className="hover:underline " to='/'> Home </Link>
+        <Link className="hover:underline " to='/auth/career'>Career</Link>
+        <Link className="hover:underline " to='/auth/about'>About</Link>
       </div>
       <div className="login flex gap-2 items-center">
         <div>
@@ -28,7 +29,7 @@ const NavBar = () => {
           
         </div>
         {
-          user && user?.email ? (<button onClick={logOut} className="btn btn-neutral rounded">Logout</button>)  : (<Link to='/auth/login'><button className="btn btn-neutral rounded"> Login </button></Link> )
+          user && user?.email ? (<button onClick={logOut} className="btn bg-red-600 hover:bg-red-700 text-white  rounded"><IoIosLogOut /> Logout</button>)  : (<Link to='/auth/login'><button className="btn bg-green-600 hover:bg-green-700 text-white rounded"><IoIosLogIn /> Login </button></Link> )
         }
         
       </div>

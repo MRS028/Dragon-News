@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import HomeLayout from '../Layouts/HomeLayout';
+
 import CategoryNews from '../Pages/CategoryNews';
 import AuthLayout from '../Layouts/AuthLayout';
 import ErrorPage from '../Components/ErrorPage';
@@ -9,6 +9,9 @@ import RegisterPage from '../Components/Login-Register/RegisterPage';
 import ForgetPasswordPage from '../Components/Login-Register/ForgetPasswordPage';
 import NewsDetails from '../Pages/NewsDetails';
 import PrivateRoute from './PrivateRoute';
+import HomeLayout from '../Layouts/HomeLayout';
+import CareerPath from '../Components/Layout-component/CareerPath';
+import AboutUs from '../Components/Layout-component/AboutUs';
 
 const Router = createBrowserRouter([
     {
@@ -17,13 +20,14 @@ const Router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Navigate to={"/category/01"}></Navigate>
+                element: <Navigate to={"/category/08"}></Navigate>
             },
             {
                 path: "/category/:id",
                 element: <CategoryNews></CategoryNews>,
                 loader: ({params}) =>fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
             }
+            
         ]
     },
     {
@@ -47,7 +51,16 @@ const Router = createBrowserRouter([
             {
                 path:"/auth/forgetpassword",
                 element: <ForgetPasswordPage></ForgetPasswordPage>
+            }
+            ,
+            {
+                path:"/auth/career",
+                element: <CareerPath></CareerPath>
             },
+            {
+                path:"/auth/about",
+                element: <AboutUs></AboutUs>
+            }
         ]
     },
     {

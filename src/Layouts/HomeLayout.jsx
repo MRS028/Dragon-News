@@ -6,6 +6,8 @@ import LeftNavBar from "../Components/Layout-component/LeftNavBar";
 import RightNav from "../Components/RightNav";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
+
+
 const HomeLayout = () => {
   useEffect(() => {
     document.title = "Home | Dragon News";
